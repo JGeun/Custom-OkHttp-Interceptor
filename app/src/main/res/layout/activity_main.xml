@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout>
+    <data>
+        <variable
+            name="vm"
+            type="com.jgeun.study.customokhttpinterceptor.MainViewModel" />
+    </data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/item_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt;Item Area&gt;"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Data: "
+            app:layout_constraintTop_toBottomOf="@id/item_area"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/item_data_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="itemName pay"
+            android:text="@{vm.item.toString()}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/item_data"
+            app:layout_constraintTop_toBottomOf="@id/item_area"/>
+
+        <TextView
+            android:id="@+id/person_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt;Person Area&gt;"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_data"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/person_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Person Data: "
+            app:layout_constraintTop_toBottomOf="@id/person_area"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/person_data_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="itemName pay"
+            android:text="@{vm.person.toString()}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/person_data"
+            app:layout_constraintTop_toBottomOf="@id/person_area"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
