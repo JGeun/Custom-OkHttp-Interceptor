@@ -29,7 +29,6 @@ class MainViewModel : ViewModel() {
         RetrofitClient.getNetworkService().getItemAPI().enqueue(object: Callback<Item> {
             override fun onResponse(call: Call<Item>, response: Response<Item>) {
                 if (response.isSuccessful) {
-                    Log.d("Item API Success", response.message())
                     _item.value = response.body()
                 }
             }
@@ -42,14 +41,14 @@ class MainViewModel : ViewModel() {
 
 
     private fun callPersonAPI() {
-        RetrofitClient.getNetworkService().getPersonAPI().enqueue(object: Callback<Person> {
-            override fun onResponse(call: Call<Person>, response: Response<Person>) {
+        RetrofitClient.getNetworkService().getPersonAPI().enqueue(object: Callback<List<Person>> {
+            override fun onResponse(call: Call<List<Person>>, response: Response<List<Person>>) {
                 if (response.isSuccessful) {
-                    _person.value = response.body()
+                    _person.value = response.body()!![0]
                 }
             }
 
-            override fun onFailure(call: Call<Person>, t: Throwable) {
+            override fun onFailure(call: Call<List<Person>>, t: Throwable) {
                 Log.d("Person API Failure", "${t.message}")
             }
         })

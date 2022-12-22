@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private val baseUrl = "http://10.0.2.2:3001"
+    private const val baseUrl = "http://10.0.2.2:3001"
 
     private val client: OkHttpClient = OkHttpClient.Builder()
         .readTimeout(5000, TimeUnit.SECONDS)
@@ -16,7 +16,7 @@ object RetrofitClient {
         .addInterceptor(HttpLoggingInterceptor { message: String ->
             Log.d("network_info", message)
         }.setLevel(HttpLoggingInterceptor.Level.BODY))
-//        .addNetworkInterceptor(CommonNetworkInterceptor())
+        .addNetworkInterceptor(CommonNetworkInterceptor())
         .build()
 
     private val retrofit = Retrofit.Builder()

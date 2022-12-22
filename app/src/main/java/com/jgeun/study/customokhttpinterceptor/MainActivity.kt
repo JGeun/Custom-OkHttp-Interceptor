@@ -1,9 +1,8 @@
 package com.jgeun.study.customokhttpinterceptor
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.jgeun.study.customokhttpinterceptor.databinding.ActivityMainBinding
 
@@ -16,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-//        binding.apply {
-//            vm = viewModel
-//        }
+        binding.apply {
+            vm = viewModel
+        }
 
         viewModel.item.observe(this) {
             binding.itemDataContent.text = "${it.itemName} ${it.pay}"
